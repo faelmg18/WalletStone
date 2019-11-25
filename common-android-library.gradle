@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "environment"
+
+    productFlavors {
+        prod {
+            buildConfigField 'String', 'BASE_URL', '"https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/"'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation Libraries.appcompactx
+    implementation Libraries.androidcorex
+
+    implementation Libraries.navigationFragmentKtx
+    implementation Libraries.navigationUiKtx
+
+    kapt "com.google.dagger:dagger-compiler:2.24"
+
+    def navigation_version = "2.1.0-beta02"
+    api "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    api "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+}
