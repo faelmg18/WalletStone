@@ -1,2 +1,2 @@
-include Modules.app, Modules.core, Modules.common, Modules.buildSrc, Features.splashscreen
+include Modules.app, Modules.core, Modules.common, Modules.buildSrc, Features.splashscreen,Features.accountmanager
 rootProject.name = 'WalletStone'

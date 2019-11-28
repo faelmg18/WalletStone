@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">SplashScreen</string>
-    <string name="wallet_content_description">Wallet</string>
-    <string name="wallet">Wallet</string>
-    <string name="stone_content_description">stone</string>
+    <string name="close_application">Fechar Aplicação</string>
 </resources>

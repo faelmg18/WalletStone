@@ -1,3 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">common</string>
+    <string name="wallet_content_description">Wallet</string>
+    <string name="wallet">Wallet</string>
+    <string name="wallet_stone">Wallet Stone</string>
+    <string name="error">Erro</string>
+    <string name="stone_content_description">stone</string>
+    <string name="all_round_gothic_w01_demi_otf" tools:ignore="ExtraTranslation">fonts/AllRoundGothicW01Demi.otf</string>
+    <string name="all_round_gothic_w01_demi" tools:ignore="ExtraTranslation">fonts/AllRoundGothicW01Demi</string>
+    <string name="mandatory_filed">Campo obrigatório</string>
 </resources>

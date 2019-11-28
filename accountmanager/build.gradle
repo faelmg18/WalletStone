@@ -1,0 +1,7 @@
+apply from: "$rootDir/common-android-feature.gradle"
+
+dependencies {
+    implementation Libraries.design
+
+}
+

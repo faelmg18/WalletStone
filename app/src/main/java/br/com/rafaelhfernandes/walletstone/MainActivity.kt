@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.ViewCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -18,7 +19,8 @@ class MainActivity : AppCompatActivity() {
     private val appBarConfiguration: AppBarConfiguration by lazy {
         AppBarConfiguration.Builder(
             setOf(
-                R.id.splashScreenFragment
+                R.id.splashScreenFragment,
+                R.id.signInFragment
             )
         ).build()
     }
@@ -44,8 +46,14 @@ class MainActivity : AppCompatActivity() {
                     btmNavMain.visibility =
                         View.GONE
                 }
+                R.id.signInFragment -> {
+                    ViewCompat.setElevation(tlbMain, 0f)
+                }
 
-                else -> btmNavMain.visibility = View.GONE
+                else -> {
+                    btmNavMain.visibility = View.GONE
+                    supportActionBar?.show()
+                }
             }
         }
     }

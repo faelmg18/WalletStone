@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AccountManager</string>
+    <string name="invalid_email">Email inválido</string>
+    <string name="user_created_with_success">Usuário criado com sucesso!</string>
+    <string name="user_already_exists">Usuário ja existe!</string>
+    <string name="user_not_found">Usuário não econtrado!</string>
+    <string name="user_name_or_email">Nome de usuário ou email</string>
+</resources>
