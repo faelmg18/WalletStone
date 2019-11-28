@@ -10,7 +10,7 @@ import javax.crypto.spec.SecretKeySpec
 object AESCrypt {
 
     private val ALGORITHM = "AES"
-    private val KEY = "W@lLEtSt0n3"
+    private val KEY = "1Hbfh667adfDEJ78"
 
     @Throws(Exception::class)
     fun encrypt(value: String): String {

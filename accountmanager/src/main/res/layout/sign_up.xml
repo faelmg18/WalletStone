@@ -45,7 +45,6 @@
                 android:textSize="15sp"
                 font:customFont="@string/all_round_gothic_w01_demi_otf" />
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +57,7 @@
                     android:id="@+id/text_input_layout_user_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nome de usuÃ¡rio"
+                    android:hint="Nome de usuário"
                     app:theme="@style/EditTextHintLogin">
 
                     <EditText
@@ -68,15 +67,16 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/text_input_layout_user_full_name"
+                    android:id="@+id/text_input_layout_user_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nome completo"
+                    android:hint="Email"
                     app:theme="@style/EditTextHintLogin">
 
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,11 +119,10 @@
                     android:layout_marginRight="2dp"
                     android:gravity="left"
                     android:padding="3dp"
-                    android:text="Atenção, n perca o pin, pois é com ele que você irá conseguir trocar sua senha caso a perca!"
+                    android:text="Atenção, não perca o pin, pois é com ele que você irá conseguir trocar sua senha caso a perca!"
                     android:textColor="@color/material_red"
                     android:textSize="11sp"
                     font:customFont="@string/all_round_gothic_w01_demi_otf" />
-
 
                 <Button
                     android:id="@+id/button_create_user"
@@ -133,7 +132,6 @@
                     android:clickable="true"
                     android:text="Criar Usuário"
                     android:theme="@style/ButtonStyle" />
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -162,10 +160,9 @@
                         android:textAllCaps="true"
                         android:textSize="11sp"
                         font:customFont="@string/all_round_gothic_w01_demi_otf"
-                        font:underline="false" />
+                        font:underline="true" />
 
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -182,8 +179,6 @@
                     font:customFont="@string/all_round_gothic_w01_demi_otf" />
 
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

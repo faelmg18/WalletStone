@@ -7,6 +7,7 @@ import br.com.rafaelhfernandes.core.domain.usecases.GetDollarPrice
 import br.com.rafaelhfernandes.core.framework.RepositoryFactory
 import br.com.rafaelhfernandes.core.framework.model.BaseResponse
 import br.com.rafaelhfernandes.core.presentation.UiState
+import br.com.rafaelhfernandes.core.presentation.accountmanager.AccountManagerFeatureRouter
 import br.com.rafaelhfernandes.core.presentation.app.WalletStoneApplication
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -18,6 +19,10 @@ class PriceViewModel @Inject constructor(
 
     val priceRepository =
         RepositoryFactory.getInstance(WalletStoneApplication.appContext).createPriceRepositories()
+
+    val loginLogoutManager =
+        RepositoryFactory.getInstance(WalletStoneApplication.appContext).creatLoginLogoutManagerRepositories()
+
 
     class Factory @Inject constructor(
         private val getDollarPrice: GetDollarPrice
@@ -32,8 +37,8 @@ class PriceViewModel @Inject constructor(
         }
     }
 
-    private val _price = MutableLiveData<BaseResponse<Price>>()
-    val priceObservable: LiveData<BaseResponse<Price>> = _price
+    private val _price = MutableLiveData<AccountManagerFeatureRouter>()
+    val priceObservable: LiveData<AccountManagerFeatureRouter> = _price
 
     private val _getPriceState = MutableLiveData<UiState>()
     val getPriceState: LiveData<UiState> = _getPriceState
@@ -45,10 +50,18 @@ class PriceViewModel @Inject constructor(
             _getPriceState.postValue(UiState.Loading)
             val prices = getDollarPrice.invoke()
 
+            val userLogged = loginLogoutManager.retrieveUserLogged()
+
+            var state = AccountManagerFeatureRouter.GOTO_SIGIN_FEATURE
+
+            userLogged?.let {
+                state = AccountManagerFeatureRouter.GOTO_LIST_PUSHED
+            }
+
             prices.results.forEach {
                 priceRepository.save(it)
             }
-            _price.postValue(prices)
+            _price.postValue(state)
             _getPriceState.postValue(UiState.Complete)
         }
     }

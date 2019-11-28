@@ -1,4 +1,4 @@
-package br.com.rafaelhfernandes.core.data.price
+package br.com.rafaelhfernandes.core.domain.reposotories
 
 import br.com.rafaelhfernandes.core.domain.entities.Price
 import br.com.rafaelhfernandes.core.framework.model.BaseResponse

@@ -14,6 +14,7 @@ import br.com.rafaelhfernandes.common.presenter.components.CustomAlertDialog
 import br.com.rafaelhfernandes.common.presenter.components.DialogBuilder
 import br.com.rafaelhfernandes.core.framework.goToSignIn
 import br.com.rafaelhfernandes.core.presentation.UiState
+import br.com.rafaelhfernandes.core.presentation.accountmanager.AccountManagerFeatureRouter
 import br.com.rafaelhfernandes.core.presentation.app.coreComponent
 import br.com.rafaelhfernandes.core.presentation.price.PriceViewModel
 import br.com.rafaelhfernandes.splashscreen.R
@@ -81,7 +82,14 @@ class SplashScreenFragment : BaseFragment<PriceViewModel>() {
 
 
         viewModel.priceObservable.observe(this, Observer {
-            view.goToSignIn()
+           when(it){
+               AccountManagerFeatureRouter.GOTO_SIGIN_FEATURE -> {
+                   view.goToSignIn()
+               }
+               AccountManagerFeatureRouter.GOTO_LIST_PUSHED ->{
+                   view.goToSignIn()
+               }
+           }
         })
         viewModel.getPriceState.observe(this, Observer {
 
