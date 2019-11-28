@@ -5,4 +5,5 @@
     app:startDestination="@id/nav_splash_screen">
 
     <include app:graph="@navigation/nav_splash_screen" />
+    <include app:graph="@navigation/nav_account" />
 </navigation>

@@ -15,6 +15,7 @@ object Modules {
 
 object Features {
     val splashscreen = ":splashscreen"
+    val accountmanager = ":accountmanager"
 }
 
 object Releases {
@@ -32,11 +33,14 @@ object Versions {
     val androidxVersion = "1.1.0"
     val constraintlayoutxVersion = "1.1.3"
 
+    val rxandroid = "2.0.1"
+
     val navigationVersion = "2.1.0"
     val lifecycle = "2.0.0"
     val roomLifecycleVersion = "1.1.1"
     val roomRXVersion = "1.1.1"
-
+    val design = "1.0.0"
+    val appcompatx = "1.0.2"
 }
 
 object Libraries {
@@ -45,18 +49,21 @@ object Libraries {
     val constraintlayoutx =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintlayoutxVersion}"
 
-    val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
+    val navigationFragmentKtx =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
     val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
+    val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid}"
+
 
     val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     val roomCompiler = "android.arch.persistence.room:compiler:${Versions.roomLifecycleVersion}"
     val roomRX = "android.arch.persistence.room:rxjava2:${Versions.roomRXVersion}"
     val roomLifecycle = "android.arch.persistence.room:runtime:${Versions.roomLifecycleVersion}"
+
+    val design = "com.google.android.material:material:${Versions.design}"
+
 }
 
-object SupportLibraries {
-
-}
 
 object TestLibraries {
 }

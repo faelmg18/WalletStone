@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="builder"
+            type="br.com.rafaelhfernandes.common.presenter.components.CustomAlertDialog.Builder" />
+
+        <variable
+            name="listener"
+            type="br.com.rafaelhfernandes.common.presenter.components.CustomAlertDialog.DialogBuilderButtonClickListener" />
+    </data>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:font="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <br.com.rafaelhfernandes.common.presenter.components.TextViewCustomFont
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{builder.title}"
+            android:textColor="@color/material_red"
+            android:textSize="26sp"
+            font:customFont="@string/all_round_gothic_w01_demi_otf" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/black" />
+
+
+        <br.com.rafaelhfernandes.common.presenter.components.TextViewCustomFont
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@{builder.message}"
+            android:textSize="26sp"
+            font:customFont="@string/all_round_gothic_w01_demi_otf" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:onClick="@{()->builder.buttonClickListener.onPositiveButtonClick(builder.customAlertDialog)}"
+                android:text="@{builder.positiveButtonTitle}"
+                android:theme="@style/PositiveButtonStyle"
+                android:visibility="@{TextUtils.isEmpty(builder.positiveButtonTitle)?View.GONE:View.VISIBLE}"
+                app:onPositiveClickListener="@{}" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:onClick="@{()->builder.buttonClickListener.onNegativeButtonClick(builder.customAlertDialog)}"
+                android:text="@{builder.negativeButtonTitle}"
+                android:theme="@style/NegativeButtonStyle"
+                android:visibility="@{TextUtils.isEmpty(builder.negativeButtonTitle)?View.GONE:View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <br.com.rafaelhfernandes.common.presenter.components.TextViewCustomFont
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/wallet_stone" />
+    </LinearLayout>
+
+</layout>

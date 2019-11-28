@@ -1,8 +1,7 @@
 package br.com.rafaelhfernandes.core.presentation.price
 
-import android.util.Log
+import android.text.TextUtils
 import androidx.lifecycle.*
-import br.com.rafaelhfernandes.core.data.price.PriceDataSource
 import br.com.rafaelhfernandes.core.domain.entities.Price
 import br.com.rafaelhfernandes.core.domain.usecases.GetDollarPrice
 import br.com.rafaelhfernandes.core.framework.RepositoryFactory
@@ -14,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class PriceViewModel @Inject constructor(
-    getDollarPrice: GetDollarPrice
+    val getDollarPrice: GetDollarPrice
 ) : ViewModel() {
 
     val priceRepository =
@@ -39,20 +38,18 @@ class PriceViewModel @Inject constructor(
     private val _getPriceState = MutableLiveData<UiState>()
     val getPriceState: LiveData<UiState> = _getPriceState
 
-    init {
+    fun getDollarPriceToday(){
         viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
             _getPriceState.postValue(UiState.Error(throwable))
         }) {
             _getPriceState.postValue(UiState.Loading)
-            val prices = getDollarPrice()
+            val prices = getDollarPrice.invoke()
 
             prices.results.forEach {
-               priceRepository.save(it)
+                priceRepository.save(it)
             }
-
             _price.postValue(prices)
             _getPriceState.postValue(UiState.Complete)
         }
     }
-
 }

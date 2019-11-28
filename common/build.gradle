@@ -1,6 +1,7 @@
 apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
+    kapt 'com.android.databinding:compiler:3.1.4'
     implementation Libraries.navigationFragmentKtx
     implementation Libraries.navigationUiKtx
 }
