@@ -16,9 +16,7 @@ fun createDefaultNavOptions(destination: Int, inclusive: Boolean = false) = NavO
     .build()
 
 fun NavController.navigateUriWithDefaultOptions(
-    uri: Uri,
-    extras: FragmentNavigator.Extras? = null,
-    inclusive: Boolean = false
+    uri: Uri, extras: FragmentNavigator.Extras? = null, inclusive: Boolean = false
 ) {
     this.navigate(
         uri,

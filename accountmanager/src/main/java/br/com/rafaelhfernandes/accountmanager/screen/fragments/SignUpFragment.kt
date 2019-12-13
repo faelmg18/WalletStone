@@ -9,12 +9,12 @@ import androidx.navigation.fragment.findNavController
 import br.com.rafaelhfernandes.accountmanager.R
 import br.com.rafaelhfernandes.accountmanager.dependeciesinjections.DaggerAccountManagerComponent
 import br.com.rafaelhfernandes.accountmanager.dependeciesinjections.UserModule
+import br.com.rafaelhfernandes.common.extensions.isEmailValid
 import br.com.rafaelhfernandes.common.extensions.showToast
 import br.com.rafaelhfernandes.common.extensions.validateFieldFilled
 import br.com.rafaelhfernandes.common.presenter.BaseFragment
 import br.com.rafaelhfernandes.common.presenter.exceptions.FieldNotFiledExeption
 import br.com.rafaelhfernandes.core.domain.entities.User
-import br.com.rafaelhfernandes.core.framework.Validator.validate
 import br.com.rafaelhfernandes.core.presentation.UiState
 import br.com.rafaelhfernandes.core.presentation.accountmanager.AccountManagerUserState.USER_ALREADY_EXISTS
 import br.com.rafaelhfernandes.core.presentation.accountmanager.AccountManagerUserState.USER_CREATED
@@ -53,7 +53,7 @@ class SignUpFragment : BaseFragment<AccountManagerViewModel>() {
     }
 
     private fun bindObservables() {
-        viewModel.userSate.observe(this, Observer {
+        viewModel.uiSate.observe(this, Observer {
 
             if (it is UiState.Error) {
                 val message = it.throwable.message
@@ -86,19 +86,13 @@ class SignUpFragment : BaseFragment<AccountManagerViewModel>() {
                 text_input_layout_pin
             )
 
-            val email = text_input_layout_user_email.editText?.text.toString()
-
-            val isValid = validate(
-                android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches(),
-                getString(R.string.invalid_email)
-            ) {
-                text_input_layout_user_email.error = it.message
+            if (!text_input_layout_user_email.isEmailValid()) {
+                text_input_layout_user_email.error = getString(R.string.invalid_email)
+                return
             }
 
-            if (isValid) {
-                val userEntity = createUserEntity()
-                viewModel.saveUser(userEntity)
-            }
+            val userEntity = createUserEntity()
+            viewModel.saveUser(userEntity)
 
         } catch (fieldNotFiledException: FieldNotFiledExeption) {
             Log.e("fieldNotFiledException", fieldNotFiledException.message)

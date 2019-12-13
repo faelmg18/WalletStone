@@ -8,25 +8,19 @@ import androidx.navigation.fragment.FragmentNavigator
 import br.com.rafaelhfernandes.core.presentation.utils.navigateUriWithDefaultOptions
 
 const val ACCOUNT_MANAGER_SIGN_IN = "walletstone://signinfragment"
-const val PRODUCT_DETAILS_URI = "pocmodularnavigation://productdetails"
-const val REPOSITORY_DETAILS_URI = "pocmodularnavigation://repositoriesdetailfragment"
-const val PRODUCT_DETAILS_FRAGMENT_URI = "pocmodularnavigation://productdetailfragment"
+const val HOME_FRAGMENT_URI = "walletstone://homefragment"
 
-fun View.goToProduct(extras: FragmentNavigator.Extras? = null) =
-    gotoNextScreen(extras, PRODUCT_DETAILS_URI)
-
-fun View.goToMyAccountAndClearAllBackStack(extras: FragmentNavigator.Extras? = null) {
-    goToSignIn(extras, true)
-}
+fun View.gotoHome(extras: FragmentNavigator.Extras? = null) =
+    gotoNextScreen(extras, HOME_FRAGMENT_URI, inclusive = false, clearAll = true)
 
 fun View.goToSignIn(extras: FragmentNavigator.Extras? = null, clearAll: Boolean = false) =
-    gotoNextScreen(extras = extras, uri = ACCOUNT_MANAGER_SIGN_IN, inclusive = false, clearAll = clearAll)
+    gotoNextScreen(
+        extras = extras,
+        uri = ACCOUNT_MANAGER_SIGN_IN,
+        inclusive = false,
+        clearAll = clearAll
+    )
 
-fun View.goToRepositoryDetail(extras: FragmentNavigator.Extras? = null) =
-    gotoNextScreen(extras = extras, uri = REPOSITORY_DETAILS_URI, inclusive = false, clearAll = false)
-
-fun View.goToProductDetailFragment(extras: FragmentNavigator.Extras? = null) =
-    gotoNextScreen(extras = extras, uri = PRODUCT_DETAILS_FRAGMENT_URI, inclusive = false, clearAll = false)
 private fun View.clearBackStack(): Boolean = findNavController().popBackStack()
 
 private fun View.gotoNextScreen(
@@ -36,8 +30,7 @@ private fun View.gotoNextScreen(
     clearAll: Boolean = false
 ) {
     if (clearAll) {
-        while (clearBackStack()) {
-            //noting to do
+        while (clearBackStack()) { //noting to do
         }
     }
     findNavController().navigateUriWithDefaultOptions(

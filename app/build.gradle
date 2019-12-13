@@ -52,7 +52,6 @@ dependencies {
 
     implementation project(Features.splashscreen)
     implementation project(Features.accountmanager)
+    implementation project(Features.home)
     implementation project(Modules.common)
-
-
 }

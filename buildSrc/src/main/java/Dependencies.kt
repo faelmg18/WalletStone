@@ -16,6 +16,7 @@ object Modules {
 object Features {
     val splashscreen = ":splashscreen"
     val accountmanager = ":accountmanager"
+    val home = ":transactions"
 }
 
 object Releases {

@@ -6,4 +6,5 @@
 
     <include app:graph="@navigation/nav_splash_screen" />
     <include app:graph="@navigation/nav_account" />
+    <include app:graph="@navigation/nav_home" />
 </navigation>

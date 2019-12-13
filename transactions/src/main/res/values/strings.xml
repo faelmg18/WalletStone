@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Transactions</string>
+    <string name="transactions_label">Transações</string>
+</resources>

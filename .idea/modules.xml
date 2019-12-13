@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/splashscreen/splashscreen.iml" filepath="$PROJECT_DIR$/splashscreen/splashscreen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/transactions/transactions.iml" filepath="$PROJECT_DIR$/transactions/transactions.iml" />
     </modules>
   </component>
 </project>

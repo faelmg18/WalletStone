@@ -1,7 +1,7 @@
 package br.com.rafaelhfernandes.splashscreen.dependeciesinjections
 
-import br.com.rafaelhfernandes.core.domain.usecases.GetDollarPrice
-import br.com.rafaelhfernandes.core.presentation.price.PriceViewModel
+import br.com.rafaelhfernandes.core.domain.usecases.GetBritaPrice
+import br.com.rafaelhfernandes.core.presentation.price.SplashViewModel
 import dagger.Module
 import dagger.Provides
 
@@ -10,7 +10,7 @@ class PriceModule {
 
     @Provides
     fun providePriceViewModelFactory(
-        getDollarPrice: GetDollarPrice
-    ) = PriceViewModel.Factory(getDollarPrice)
+        getBritaPrice: GetBritaPrice
+    ) = SplashViewModel.Factory(getBritaPrice)
 
 }
