@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.splashScreenFragment,
                 R.id.signInFragment,
-                R.id.transactionsHomeFragment
+                R.id.transactionsHomeFragment,
+                R.id.shopHomeFragment
             )
         ).build()
     }
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private val navController: NavController by lazy { findNavController(R.id.fragment_nav_host) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -47,9 +49,6 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.hide()
                     btmNavMain.visibility =
                         View.GONE
-                }
-
-                R.id.signInFragment -> {
                     ViewCompat.setElevation(tlbMain, 0f)
                 }
 

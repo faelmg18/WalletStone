@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:font="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <br.com.rafaelhfernandes.common.presenter.components.TextViewCustomFont
+        android:id="@+id/saldo_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/money_textview"
+
+        android:text="@string/balance"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        font:customFont="@string/all_round_gothic_w01_demi_otf" />
+
+    <org.fabiomsr.moneytextview.MoneyTextView
+        android:id="@+id/money_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp"
+        app:baseTextColor="@color/white"
+        app:baseTextSize="54sp"
+        app:decimalDigitsTextSize="30sp"
+        app:decimalMargin="6dp"
+        app:includeDecimalSeparator="true"
+        app:symbol="@string/br_symbo_currency"
+        app:symbolGravity="start|top"
+        app:symbolMargin="6dp"
+        app:symbolTextSize="30sp" />
+
+    <TextView
+        android:id="@+id/text_view_balance_hide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="R$---------"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/image_view_show_balance"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:visibility="gone"
+        android:layout_below="@id/money_textview"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:src="@drawable/close_eye_icon" />
+
+    <ImageView
+        android:id="@+id/image_view_hide_balance"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/money_textview"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:src="@drawable/open_eye_icon"
+        android:visibility="visible" />
+
+</LinearLayout>

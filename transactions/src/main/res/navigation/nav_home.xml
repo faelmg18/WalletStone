@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/transactionsHomeFragment"
-        android:name="br.com.rafaelhfernandes.home.screens.TransactionsHomeFragment"
+        android:name="br.com.rafaelhfernandes.transaction.screens.TransactionsHomeFragment"
         android:label="@string/transactions_label">
 
         <deepLink
