@@ -1,6 +1,6 @@
 package br.com.rafaelhfernandes.core.framework.price
 
-import br.com.rafaelhfernandes.core.domain.entities.Price
+import br.com.rafaelhfernandes.core.domain.entities.Brita
 import br.com.rafaelhfernandes.core.framework.model.BaseResponse
 import retrofit2.http.GET
 
@@ -9,7 +9,7 @@ const val DATA_COTACAO = "CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao
 
 interface PriceApi {
     @GET(DATA_COTACAO)
-    suspend fun getDollarPriceToday(): BaseResponse<Price>
+    suspend fun getDollarPriceToday(): BaseResponse<Brita>
 }
 
 /*const val tt =
@@ -17,5 +17,5 @@ interface PriceApi {
 
 interface PriceApi {
     @GET(tt)
-    suspend fun getDollarPriceToday(@Query("dataCotacao") dataCotacao: String): BaseResponse<Price>
+    suspend fun getDollarPriceToday(@Query("dataCotacao") dataCotacao: String): BaseResponse<Brita>
 }*/

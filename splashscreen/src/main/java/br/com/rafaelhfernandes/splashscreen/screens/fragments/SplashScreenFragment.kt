@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import br.com.rafaelhfernandes.common.extensions.changeFont
@@ -13,10 +12,11 @@ import br.com.rafaelhfernandes.common.presenter.BaseFragment
 import br.com.rafaelhfernandes.common.presenter.components.CustomAlertDialog
 import br.com.rafaelhfernandes.common.presenter.components.DialogBuilder
 import br.com.rafaelhfernandes.core.framework.goToSignIn
+import br.com.rafaelhfernandes.core.framework.gotoHome
 import br.com.rafaelhfernandes.core.presentation.UiState
 import br.com.rafaelhfernandes.core.presentation.accountmanager.AccountManagerFeatureRouter
 import br.com.rafaelhfernandes.core.presentation.app.coreComponent
-import br.com.rafaelhfernandes.core.presentation.price.PriceViewModel
+import br.com.rafaelhfernandes.core.presentation.price.SplashViewModel
 import br.com.rafaelhfernandes.splashscreen.R
 import br.com.rafaelhfernandes.splashscreen.dependeciesinjections.DaggerSplashComponent
 import br.com.rafaelhfernandes.splashscreen.dependeciesinjections.PriceModule
@@ -24,12 +24,12 @@ import kotlinx.android.synthetic.main.splash_screen_fragment.*
 import javax.inject.Inject
 
 
-class SplashScreenFragment : BaseFragment<PriceViewModel>() {
+class SplashScreenFragment : BaseFragment<SplashViewModel>() {
 
     @Inject
-    lateinit var factory: PriceViewModel.Factory
+    lateinit var factory: SplashViewModel.Factory
 
-    override val viewModel: PriceViewModel by viewModels(factoryProducer = { factory })
+    override val viewModel: SplashViewModel by viewModels(factoryProducer = { factory })
 
     lateinit var animationFromBottom: Animation
     lateinit var animationFromTop: Animation
@@ -82,14 +82,14 @@ class SplashScreenFragment : BaseFragment<PriceViewModel>() {
 
 
         viewModel.priceObservable.observe(this, Observer {
-           when(it){
-               AccountManagerFeatureRouter.GOTO_SIGIN_FEATURE -> {
-                   view.goToSignIn()
-               }
-               AccountManagerFeatureRouter.GOTO_LIST_PUSHED ->{
-                   view.goToSignIn()
-               }
-           }
+            when (it) {
+                AccountManagerFeatureRouter.GOTO_SIGIN_FEATURE -> {
+                    view.goToSignIn()
+                }
+                AccountManagerFeatureRouter.GOTO_LIST_PUSHED -> {
+                    view.gotoHome()
+                }
+            }
         })
         viewModel.getPriceState.observe(this, Observer {
 
@@ -98,7 +98,14 @@ class SplashScreenFragment : BaseFragment<PriceViewModel>() {
                     context!!,
                     title = getString(R.string.error),
                     message = (it as UiState.Error).throwable.message,
-                    positiveButtonTitle = getString(R.string.close_application)
+                    positiveButtonTitle = getString(R.string.close_application),
+                    buttonClickListener = object :
+                        CustomAlertDialog.DialogBuilderButtonClickListener() {
+                        override fun onPositiveButtonClick(customAlertDialog: CustomAlertDialog) {
+                            super.onPositiveButtonClick(customAlertDialog)
+                            activity?.finish()
+                        }
+                    }
                 ).show()
             }
         })

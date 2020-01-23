@@ -1,2 +1,3 @@
-include Modules.app, Modules.core, Modules.common, Modules.buildSrc, Features.splashscreen,Features.accountmanager
-rootProject.name = 'WalletStone'
+include Modules.app, Modules.core, Modules.common, Modules.buildSrc, Features.splashscreen,
+        Features.accountmanager,Features.home, Features.shop
+rootProject.name = WalletApplication.walletApplicationName

@@ -3,6 +3,7 @@ package br.com.rafaelhfernandes.core.presentation.accountmanager
 import androidx.lifecycle.*
 import br.com.rafaelhfernandes.core.domain.entities.LoginLogoutManager
 import br.com.rafaelhfernandes.core.domain.entities.User
+import br.com.rafaelhfernandes.core.domain.entities.Wallet
 import br.com.rafaelhfernandes.core.framework.RepositoryFactory
 import br.com.rafaelhfernandes.core.presentation.BaseViewModel
 import br.com.rafaelhfernandes.core.presentation.UiState
@@ -14,16 +15,20 @@ import javax.inject.Inject
 
 class AccountManagerViewModel @Inject constructor() : BaseViewModel() {
 
+    companion object {
+        private const val INITIAL_VALUE_WALLET_BALANCE = 100000.00
+    }
+
+
     private val usereRepository =
-        RepositoryFactory.getInstance(WalletStoneApplication.appContext).creatUserRepositories()
+        RepositoryFactory.getInstance(WalletStoneApplication.appContext).createUserRepositories()
 
     private val loginLogoutManagerRepository =
         RepositoryFactory.getInstance(WalletStoneApplication.appContext)
-            .creatLoginLogoutManagerRepositories()
+            .createLoginLogoutManagerRepositories()
 
-    override fun myOnCleared() {
-
-    }
+    private val walletRepository = RepositoryFactory.getInstance(WalletStoneApplication.appContext)
+        .creatWalletRepositories()
 
     class Factory @Inject constructor(
 
@@ -37,15 +42,12 @@ class AccountManagerViewModel @Inject constructor() : BaseViewModel() {
         }
     }
 
-    private val _userState = MutableLiveData<UiState>()
-    val userSate: LiveData<UiState> = _userState
-
     private val _userLiveData = MutableLiveData<AccountManagerUserState>()
     val userLiveData: LiveData<AccountManagerUserState> = _userLiveData
 
     fun executeLogin(userNameOrEmail: String, password: String) {
         viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
-            _userState.postValue(UiState.Error(throwable))
+            postError(throwable)
         }) {
 
             var user =
@@ -63,16 +65,18 @@ class AccountManagerViewModel @Inject constructor() : BaseViewModel() {
             }
 
             _userLiveData.postValue(state)
-            _userState.postValue(UiState.Complete)
+            updateUiState(UiState.Complete)
         }
     }
 
     fun saveUser(user: User) {
 
         viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
-            _userState.postValue(UiState.Error(throwable))
+            postError(throwable)
         }) {
             val result = usereRepository.save(user)
+
+            walletRepository.insert(Wallet(result, INITIAL_VALUE_WALLET_BALANCE))
 
             var state = AccountManagerUserState.USER_CREATED
 
@@ -81,7 +85,7 @@ class AccountManagerViewModel @Inject constructor() : BaseViewModel() {
             }
 
             _userLiveData.postValue(state)
-            _userState.postValue(UiState.Complete)
+            updateUiState(UiState.Complete)
         }
     }
 }

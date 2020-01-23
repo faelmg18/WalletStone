@@ -10,7 +10,7 @@
     </style>
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:fontFamily">@string/all_round_gothic_w01_demi</item>
+        <item name="android:fontFamily">@font/allroundgothicw01demi</item>
         <item name="colorControlNormal">@color/white</item>
     </style>
 

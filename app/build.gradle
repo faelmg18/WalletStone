@@ -12,7 +12,7 @@ android {
     buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
-        applicationId ApplicationId.id
+        applicationId WalletApplication.id
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
         versionCode Releases.versionCode
@@ -52,7 +52,7 @@ dependencies {
 
     implementation project(Features.splashscreen)
     implementation project(Features.accountmanager)
+    implementation project(Features.home)
+    implementation project(Features.shop)
     implementation project(Modules.common)
-
-
 }

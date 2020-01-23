@@ -1,5 +1,6 @@
-object ApplicationId {
+object WalletApplication {
     val id = "br.com.rafaelhfernandes.walletstone"
+    val walletApplicationName = "WalletStone"
 }
 
 object Modules {
@@ -16,6 +17,8 @@ object Modules {
 object Features {
     val splashscreen = ":splashscreen"
     val accountmanager = ":accountmanager"
+    val home = ":transactions"
+    val shop = ":shop"
 }
 
 object Releases {

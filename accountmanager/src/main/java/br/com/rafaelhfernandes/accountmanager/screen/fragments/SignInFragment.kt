@@ -14,6 +14,8 @@ import br.com.rafaelhfernandes.common.extensions.showToast
 import br.com.rafaelhfernandes.common.extensions.validateFieldFilled
 import br.com.rafaelhfernandes.common.presenter.BaseFragment
 import br.com.rafaelhfernandes.common.presenter.exceptions.FieldNotFiledExeption
+import br.com.rafaelhfernandes.core.framework.goToSignIn
+import br.com.rafaelhfernandes.core.framework.gotoHome
 import br.com.rafaelhfernandes.core.presentation.UiState
 import br.com.rafaelhfernandes.core.presentation.accountmanager.AccountManagerUserState
 import br.com.rafaelhfernandes.core.presentation.accountmanager.AccountManagerViewModel
@@ -75,7 +77,7 @@ class SignInFragment : BaseFragment<AccountManagerViewModel>() {
     }
 
     private fun bindObservables() {
-        viewModel.userSate.observe(this, Observer {
+        viewModel.uiSate.observe(this, Observer {
             if (it is UiState.Error) {
                 val message = it.throwable.message
                 activity?.showToast(message)
@@ -90,7 +92,7 @@ class SignInFragment : BaseFragment<AccountManagerViewModel>() {
                 }
 
                 AccountManagerUserState.USER_FOUND -> {
-                    activity?.showToast("Usuário econtrado")
+                    view?.gotoHome()
                 }
             }
         })

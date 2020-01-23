@@ -8,4 +8,6 @@
     <string name="all_round_gothic_w01_demi_otf" tools:ignore="ExtraTranslation">fonts/AllRoundGothicW01Demi.otf</string>
     <string name="all_round_gothic_w01_demi" tools:ignore="ExtraTranslation">fonts/AllRoundGothicW01Demi</string>
     <string name="mandatory_filed">Campo obrigatório</string>
+    <string name="balance">Saldo</string>
+    <string name="br_symbo_currency">R$</string>
 </resources>

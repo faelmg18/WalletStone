@@ -1,9 +1,8 @@
 package br.com.rafaelhfernandes.walletstone
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.navigation.NavController
@@ -20,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         AppBarConfiguration.Builder(
             setOf(
                 R.id.splashScreenFragment,
-                R.id.signInFragment
+                R.id.signInFragment,
+                R.id.transactionsHomeFragment,
+                R.id.shopHomeFragment
             )
         ).build()
     }
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private val navController: NavController by lazy { findNavController(R.id.fragment_nav_host) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -41,17 +43,18 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.splashScreenFragment -> {
+                R.id.splashScreenFragment,
+                R.id.signInFragment,
+                R.id.signUpFragment -> {
                     supportActionBar?.hide()
                     btmNavMain.visibility =
                         View.GONE
-                }
-                R.id.signInFragment -> {
                     ViewCompat.setElevation(tlbMain, 0f)
                 }
 
                 else -> {
-                    btmNavMain.visibility = View.GONE
+                    MainActivity@ this.changeStatusBarColor(R.color.colorPrimary)
+                    btmNavMain.visibility = View.VISIBLE
                     supportActionBar?.show()
                 }
             }

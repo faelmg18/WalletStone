@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_shop"
+    app:startDestination="@id/shopHomeFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/shopHomeFragment"
+        android:name="br.com.rafaelhfernandes.shop.screens.fragments.ShopHomeFragment"
+        android:label="ShopHomeFragment" >
+
+    </fragment>
+</navigation>

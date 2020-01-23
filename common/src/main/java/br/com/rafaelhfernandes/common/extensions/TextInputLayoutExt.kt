@@ -1,6 +1,8 @@
 package br.com.rafaelhfernandes.common.extensions
 
+import android.widget.EditText
 import br.com.rafaelhfernandes.common.R
+import br.com.rafaelhfernandes.common.framework.Validator.validate
 import br.com.rafaelhfernandes.common.presenter.exceptions.FieldNotFiledExeption
 import com.google.android.material.textfield.TextInputLayout
 
@@ -15,5 +17,18 @@ fun validateFieldFilled(vararg textInputLayout: TextInputLayout) {
         } else {
             it.error = null
         }
+    }
+}
+
+fun TextInputLayout.isEmailValid(): Boolean {
+    editText?.let {
+        return it.isEmailValid()
+    }
+    return false
+}
+
+fun EditText.isEmailValid(): Boolean {
+    return validate {
+        android.util.Patterns.EMAIL_ADDRESS.matcher(this.text.toString()).matches()
     }
 }

@@ -8,12 +8,14 @@ import br.com.rafaelhfernandes.core.data.database.util.UserConvert
 import br.com.rafaelhfernandes.core.data.loginlogoutmanager.LoginLogoutManagerDao
 import br.com.rafaelhfernandes.core.data.price.PriceDao
 import br.com.rafaelhfernandes.core.data.user.UserDao
+import br.com.rafaelhfernandes.core.data.wallet.WalletDao
 import br.com.rafaelhfernandes.core.domain.entities.LoginLogoutManager
-import br.com.rafaelhfernandes.core.domain.entities.Price
+import br.com.rafaelhfernandes.core.domain.entities.Brita
 import br.com.rafaelhfernandes.core.domain.entities.User
+import br.com.rafaelhfernandes.core.domain.entities.Wallet
 
 @Database(
-    entities = [Price::class, User::class, LoginLogoutManager::class],
+    entities = [Brita::class, User::class, LoginLogoutManager::class, Wallet::class],
     version = VERSION
 )
 @TypeConverters(UserConvert::class)
@@ -22,6 +24,7 @@ abstract class WalletStoneDataBase : RoomDatabase() {
     abstract val priceDao: PriceDao
     abstract val userDao: UserDao
     abstract val loginLogoutManagerDao: LoginLogoutManagerDao
+    abstract val walletDao: WalletDao
 
     companion object {
         const val VERSION = 1

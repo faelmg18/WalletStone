@@ -4,4 +4,6 @@ dependencies {
     kapt 'com.android.databinding:compiler:3.1.4'
     implementation Libraries.navigationFragmentKtx
     implementation Libraries.navigationUiKtx
+    implementation 'org.fabiomsr:moneytextview:1.1.0'
+
 }

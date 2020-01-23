@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/transactionsHomeFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/transactionsHomeFragment"
+        android:name="br.com.rafaelhfernandes.transaction.screens.TransactionsHomeFragment"
+        android:label="@string/transactions_label">
+
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="walletstone://homefragment" />
+
+    </fragment>
+</navigation>
